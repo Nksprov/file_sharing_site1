@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать файлы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Логотип -->
+        <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Логотип" class="logo">
+
+        <h1>Загруженные файлы</h1>
+        <div class="images-container">
+            {% for filename in filenames %}
+                <div class="image-item">
+                    <a href="{{ url_for('uploaded_file', filename=folder ~ '/' ~ filename) }}" target="_blank">
+                        <img src="{{ url_for('uploaded_file', filename=folder ~ '/' ~ filename) }}" alt="{{ filename }}">
+                    </a>
+                    <p>{{ filename }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="/">Назад</a>
+    </div>
+</body>
+</html>
